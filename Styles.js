@@ -10,6 +10,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20
   },
+  homeTitle: {
+    fontSize: 30
+  },
+  header: {
+    fontSize: 24
+  },
+  paragraph: {
+    fontSize: 16
+  },
   formInput: {
     borderStyle: "solid",
     borderWidth: 1,

@@ -51,7 +51,8 @@ class AppHome extends Component {
         closeModal={() => this.setState({addReviewsVisible: false})} 
         modalVisible={this.state.addReviewsVisible}
         submitReview={(title, comment, rating) => testReviews.push({title: title, comment: comment, rating: rating, voteTotal: 0, replies: []})}/>
-       <Text>MyCompany Reviews</Text>
+
+       <Text style={styles.homeTitle} >MyCompany Reviews</Text>
   
       
        <FlatList
@@ -75,23 +76,46 @@ class AppHome extends Component {
 
 
 class Review extends Component {
+  constructor(props) {
+    super(props)
+
+    renderStars = (rating) => {
+      var toReturn = []
+
+      for (var i = 0; i<rating; i++)
+          toReturn.push(<MaterialCommunityIcons 
+              name="star"
+              size={24} 
+              color={ratingYellow}
+            />);
+      
+      return toReturn
+    }
+
+  }
 
   render() {
     return(
       <View>
-        <Text>{this.props.title}</Text>
-        <Text>{this.props.comment}</Text>
+        <Text style={styles.header}>{this.props.title}</Text>
+        <Text style={styles.paragraph}>{this.props.comment}</Text>
 
-        <Text>{this.props.rating}</Text>
+        
+        <View style={{flexDirection: 'row'}}>
+          { 
+           renderStars(this.props.rating)
+          }
+        </View>
 
 
         <View style={{flexDirection: 'row'}}>
-          <MaterialCommunityIcons name={"arrow-up-bold"} size={32} color={"green"}/>
-          <Text>{this.props.voteTotal}</Text>
-          <MaterialCommunityIcons name={"arrow-down-bold"} size={32} color={"red"}/>
+
+
+          <MaterialCommunityIcons name={"arrow-up-bold-outline"} size={32} color={"green"}/>
+          <Text style={styles.paragraph}>{this.props.voteTotal}</Text>
+          <MaterialCommunityIcons name={"arrow-down-bold-outline"} size={32} color={"red"}/>
         </View>
 
-        
 
 
       </View>
