@@ -77,10 +77,16 @@ class AppHome extends Component {
 
 class Review extends Component {
   constructor(props) {
+
+    this.state = {
+      upvoted: false,
+      downvoted: false
+    }
     super(props)
 
     renderStars = (rating) => {
       var toReturn = []
+      var roundedRating = Math.round(rating)
 
       for (var i = 0; i<rating; i++)
           toReturn.push(<MaterialCommunityIcons 
@@ -91,6 +97,30 @@ class Review extends Component {
       
       return toReturn
     }
+
+    upvoteClicked = () => {
+      if (this.state.upvoted == false) { 
+        this.setState({downvoted: false, upvoted: true})
+        this.props.setVote(1)
+      }
+      else {
+        this.setState({downvoted: false, upvoted: false})
+        this.props.setVote(0)
+      }
+    }
+
+    downvoteClicked = () => {
+      if (this.state.downvoted == false) { 
+        this.setState({downvoted: true, upvoted: false})
+        this.props.setVote(-1)
+      }
+      else {
+        this.setState({downvoted: false, upvoted: false})
+        this.props.setVote(0)
+      }
+    }
+
+
 
   }
 
@@ -111,9 +141,15 @@ class Review extends Component {
         <View style={{flexDirection: 'row'}}>
 
 
-          <MaterialCommunityIcons name={"arrow-up-bold-outline"} size={32} color={"green"}/>
+          <TouchableOpacity onPress={upvoteClicked}>
+            <MaterialCommunityIcons name={this.state.upvoted === true ? "arrow-up-bold" : "arrow-up-bold-outline"} size={32} color={"green"}/>
+          </TouchableOpacity>
+
           <Text style={styles.paragraph}>{this.props.voteTotal}</Text>
-          <MaterialCommunityIcons name={"arrow-down-bold-outline"} size={32} color={"red"}/>
+
+          <TouchableOpacity onPress={downvoteClicked}>
+            <MaterialCommunityIcons name={this.state.downvoted === true ? "arrow-down-bold" : "arrow-down-bold-outline"} size={32} color={"red"}/>
+          </TouchableOpacity>
         </View>
 
 
