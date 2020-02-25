@@ -8,6 +8,8 @@ import Review from './Review.js';
 import {styles, ratingYellow} from './Styles.js';
 
 
+//Disables warnings
+console.disableYellowBox = true;
 
 var initialReviews = [
   {title: "My First Review",
