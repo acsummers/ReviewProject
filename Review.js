@@ -77,26 +77,26 @@ export default class Review extends Component {
 
   render() {
     return(
-      <View>
-        <Text style={styles.header}>{this.props.title}</Text>
-        <Text style={styles.paragraph}>{this.props.comment}</Text>
+      <View style={styles.reviewCard}>
+        <Text style={{...styles.header, marginBottom: 5}}>{this.props.title}</Text>
+        <Text style={{...styles.paragraph, marginBottom: 5}}>{this.props.comment}</Text>
 
         
-        <View style={{flexDirection: 'row'}}>
+        <View style={{marginBottom: 5, flexDirection: 'row'}}>
           { 
            renderStars(this.props.rating)
           }
         </View>
 
 
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row', marginBottom: 5}}>
 
 
           <TouchableOpacity onPress={upvoteClicked}>
             <MaterialCommunityIcons name={this.state.upvoted === true ? "arrow-up-bold" : "arrow-up-bold-outline"} size={32} color={"green"}/>
           </TouchableOpacity>
 
-          <Text style={styles.paragraph}>{this.props.voteTotal}</Text>
+          <Text style={{...styles.paragraph,width:20, textAlign:'center', alignSelf:'center'}}>{this.props.voteTotal}</Text>
 
           <TouchableOpacity onPress={downvoteClicked}>
             <MaterialCommunityIcons name={this.state.downvoted === true ? "arrow-down-bold" : "arrow-down-bold-outline"} size={32} color={"red"}/>
@@ -107,8 +107,8 @@ export default class Review extends Component {
         <View>
 
           <View style={{flexDirection: 'row'}}>
-            <TouchableOpacity onPress={() => this.setState({repliesVisible: !this.state.repliesVisible})} style={{flex: 1, flexDirection: 'row', alignItems: 'center'}}><Text>{!this.state.repliesVisible ? "See" : "Hide"} {String(this.props.replies.length)} Replies</Text><MaterialIcons name={"add"} size={16}/></TouchableOpacity>
-            <TouchableOpacity onPress={() => this.setState({addingReply: !this.state.addingReply})} style={{flex: 1}}><Text>{!this.state.addingReply ? "Add Reply" : "Hide adding reply"}</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({repliesVisible: !this.state.repliesVisible})} style={{flex: 1, flexDirection: 'row', alignItems:'center', justifyContent: 'center'}}><Text>{!this.state.repliesVisible ? "See" : "Hide"} {String(this.props.replies.length)} Replies</Text><MaterialIcons name={"add"} size={16}/></TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({addingReply: !this.state.addingReply})} style={{flex: 1, justifyContent: 'center'}}><Text style={{textAlign: 'center'}}>{!this.state.addingReply ? "Add Reply" : "Hide adding reply"}</Text></TouchableOpacity>
           </View>
 
           {this.state.addingReply ? <TextInput onChangeText={(text) => this.setState({currentReplyText: text})} onEndEditing={this.submitReply} style={styles.formInput}/> : <View/>}

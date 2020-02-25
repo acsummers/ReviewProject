@@ -44,13 +44,13 @@ export default class AddReviewModal extends Component {
       </View>
 
 
-      <Text>Enter a title</Text>
+      <Text style={styles.paragraph}>Enter a title</Text>
       <TextInput onChangeText={(text) => this.setState({title: text})} style={styles.formInput}/>
 
-      <Text>Leave your comment</Text>
+      <Text style={styles.paragraph}>Leave your comment</Text>
       <TextInput onChangeText={(text) => this.setState({comment: text})} style={styles.formInput}/>
 
-      <Text>Select a rating</Text>
+      <Text style={styles.paragraph}>Select a rating</Text>
 
       <View style={{flexDirection: 'row'}}>
 

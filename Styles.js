@@ -11,7 +11,14 @@ export const styles = StyleSheet.create({
     padding: 20
   },
   homeTitle: {
-    fontSize: 30
+    fontSize: 30,
+    marginBottom: 20
+  },
+  reviewCard: {
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#dddddd',
+    padding: 5
   },
   header: {
     fontSize: 24
@@ -36,5 +43,5 @@ export const styles = StyleSheet.create({
   },
   actionButtonActive: {
     backgroundColor: 'green'
-  },
+  }
 });
