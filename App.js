@@ -7,18 +7,9 @@ import Review from './Review.js';
 
 import {styles, ratingYellow} from './Styles.js';
 
-/*
-Reviews:
-Title
-Comment
-Rating
-
-VoteTotal (upvotes - downvotes)
-Replies (list of Text)
-*/
 
 
-var testReviews = [
+var initialReviews = [
   {title: "My First Review",
   comment: "This is a test review, this company is my favorite.",
   rating: 4,
@@ -40,7 +31,7 @@ class AppHome extends Component {
     super(props);
     this.state = {
       addReviewsVisible: false,
-      reviews: testReviews
+      reviews: initialReviews
     }
 
     this.voteIncrementFactory = (review) => {
